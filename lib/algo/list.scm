@@ -1,5 +1,5 @@
 (library (algo list)
-    (export andmap ormap insert-last)
+    (export andmap ormap index)
     (import (rnrs (6)) (exn contract))
     
     (define (andmap p l)
@@ -16,4 +16,14 @@
             (lambda (cc)
                 (for-each (lambda (e) (if (p e) (cc #t))) l)
                 #f)))
+    (define (index l v eq)
+        (unless (list? l)
+            (raise-contract-error 'ormap "list?" l))
+        (let loop ((i 0) (l l))
+            (if (null? l)
+                #f
+                (let ((f (car l)) (r (cdr l)))
+                    (if (eq f v)
+                        i
+                        (loop (+ i 1) r))))))
 )
