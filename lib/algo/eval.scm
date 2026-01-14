@@ -1,0 +1,11 @@
+(library (algo eval)
+    (export eval-proposition)
+    (import (data connective) (data primitive) (algo list) (exn contract) (rnrs (6)))
+    
+    (define (eval-proposition tree env)
+        (cond ((and? tree) (andmap (lambda (st) (eval-proposition st env)) (children tree)))
+              ((or? tree) (ormap (lambda (st) (eval-proposition st env)) (children tree)))
+              ((not? tree) (not (car (children tree))))
+              ((primitive? tree) (cdr (assoc (primitive-name tree) env)))
+              (else (raise-contract-error 'eval-proposition "(or/c and? or? not? primitive?)" tree))))
+    )

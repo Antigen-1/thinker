@@ -20,8 +20,8 @@
     (for-each
      (lambda (n)
        (if
-	(not (or (and? n) (or? n) (not? n) (primitive? n)))
-	(raise-contract-error name "(or/c and? or? not?)" n)))
+	      (not (or (and? n) (or? n) (not? n) (primitive? n)))
+	      (raise-contract-error name "(or/c and? or? not? primitive?)" n)))
      l))
   
   (define (& . c)
@@ -32,7 +32,7 @@
     (OR c))
   (define (! c)
     (check-node-list '! (list c))
-    (NOT c))
+    (NOT (list c)))
   
   (define (children rc)
     (cond ((and? rc) (and-children rc))
