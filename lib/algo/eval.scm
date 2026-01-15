@@ -7,5 +7,5 @@
               ((or? tree) (ormap (lambda (st) (eval-proposition st env)) (children tree)))
               ((not? tree) (not (eval-proposition (car (children tree)) env)))
               ((primitive? tree) (cdr (assoc (primitive-name tree) env)))
-              (else (raise-contract-error 'eval-proposition "(or/c and? or? not? primitive?)" tree))))
+              (else (raise-contract-error 'eval-proposition "node?" tree))))
     )

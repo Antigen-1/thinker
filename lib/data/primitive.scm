@@ -1,15 +1,13 @@
 (library (data primitive)
   (export Prim primitive? primitive-name)
-  (import (except (rnrs (6)) define-record-type) (only (srfi srfi-9) define-record-type)
-	  (exn contract))
+  (import (rnrs (6)) (data node)
+	        (exn contract))
 
-  (define-record-type primitive
-    (make-primitive name)
-    primitive?
-    (name primitive-name)
-    )
+  (define-record-type (primitive make-primitive primitive?)
+    (fields (immutable name primitive-name))
+    (parent Node))
 
   (define (Prim name)
-    (if (not (string? name))
-	(raise-contract-error 'Prim "string?" name))
+    (unless (string? name)
+	    (raise-contract-error 'Prim "string?" name))
     (make-primitive name)))

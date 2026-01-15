@@ -1,27 +1,24 @@
 (library (data connective)
   (export & || ! and? or? not? children)
-  (import (only (srfi srfi-9) define-record-type) (except (rnrs (6)) define-record-type)
-	  (exn contract) (data primitive))
+  (import (rnrs (6))
+	        (exn contract) 
+          (data primitive) (data node))
   
-  (define-record-type And
-    (AND children)
-    and?
-    (children and-children))
-  (define-record-type Or
-    (OR children)
-    or?
-    (children or-children))
-  (define-record-type Not
-    (NOT children)
-    not?
-    (children not-children))
+  (define-record-type (And AND and?)
+    (fields (immutable children and-children))
+    (parent Node))
+  (define-record-type (Or OR or?)
+    (fields (immutable children or-children))
+    (parent Node))
+  (define-record-type (Not NOT not?)
+    (fields (immutable children not-children))
+    (parent Node))
 
   (define (check-node-list name l)
     (for-each
      (lambda (n)
-       (if
-	      (not (or (and? n) (or? n) (not? n) (primitive? n)))
-	      (raise-contract-error name "(or/c and? or? not? primitive?)" n)))
+       (unless (node? n)
+	      (raise-contract-error name "node?" n)))
      l))
   
   (define (& . c)
@@ -38,6 +35,6 @@
     (cond ((and? rc) (and-children rc))
 	  ((or? rc) (or-children rc))
 	  ((not? rc) (not-children rc))
-          (else (raise-contract-error 'children "(or/c and? or? not?)" rc))))
+    (else (raise-contract-error 'children "(or/c and? or? not?)" rc))))
   )
 
