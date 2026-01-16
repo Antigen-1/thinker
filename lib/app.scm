@@ -1,6 +1,6 @@
 (library (app)
     (export rules->thinker)
-    (import (parallel solve) (data node) (data connective) (rnrs (6)) (algo list) (algo consistency) (exn contract))
+    (import (parallel solve) (parallel consistency) (data node) (data connective) (rnrs (6)) (algo list) (exn contract))
     
     (define (rules->thinker . r)
         (for-each 
