@@ -5,5 +5,5 @@
   (define (raise-contract-error name exp act)
     (raise (make-exception
 	    (make-exception-with-origin name)
-	    (make-exception-with-message (format "Expected ~a; Given ~s" exp act))
+	    (make-exception-with-message (format "Contract error: Expected ~a; Given ~s" exp act))
 	    (make-programming-error)))))

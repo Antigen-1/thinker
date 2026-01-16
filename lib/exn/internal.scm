@@ -5,5 +5,5 @@
     (define (raise-internal-error name msg)
         (raise (make-exception 
                 (make-exception-with-origin name)
-                (make-exception-with-message msg)
+                (make-exception-with-message (string-append "Internal error: " msg))
                 (make-programming-error)))))
