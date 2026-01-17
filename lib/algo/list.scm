@@ -1,5 +1,5 @@
 (library (algo list)
-    (export andmap ormap index filter-map)
+    (export andmap ormap index filter-map alist?)
     (import (rnrs (6)) (exn contract) (srfi srfi-69))
     
     (define (andmap p l)
@@ -36,4 +36,6 @@
                       (r (cdr l)))
                     (let ((v (p f)))
                         (if v (cons v (loop r)) (loop r)))))))
+    (define (alist? l)
+        (and (list? l) (andmap pair? l)))
 )
