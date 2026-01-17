@@ -4,10 +4,11 @@
     
     (define (check-consistency possibilities)
         (unless (and (list? possibilities) 
+                     (pair? possibilities)
                      (andmap list? possibilities) 
                      (andmap (lambda (l) (andmap pair? l)) possibilities)
                      (apply = (map length possibilities)))
-            (raise-contract-error 'check-consistency "A list of alists of the same length" possibilities))
+            (raise-contract-error 'check-consistency "A non-empty list of alists of the same length" possibilities))
         (let ((pair-matrix (apply map (lambda ps ps) possibilities)))
             (for-each
              (lambda (pl)
