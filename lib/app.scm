@@ -1,17 +1,17 @@
 (library (app)
     (export rules->thinker)
-    (import (parallel solve) (parallel consistency) (data node) (data connective) (rnrs (6)) (algo list) (exn contract))
+    (import (parallel entail) (data node) (data connective) (rnrs (6)) (algo list) (exn contract))
     
-    (define (rules->thinker . r)
+    (define (rules->thinker . KB)
         (for-each 
             (lambda (p)
                 (unless (node? p)
                     (raise-contract-error 'rules->thinker "node?" p)))
-            r)
-        (lambda knowledge
+            KB)
+        (lambda ps
             (for-each 
              (lambda (p)
                 (unless (node? p)
                     (raise-contract-error 'rules->thinker "node?" p)))
-             knowledge)
-            (check-consistency (solve (apply & (append r knowledge)))))))
+             ps)
+            (entails? (apply & KB) (apply & ps)))))
