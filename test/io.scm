@@ -5,6 +5,6 @@
 (test-assert (or? (read-proposition (open-input-string "(or (and) \"\")"))))
 (test-assert (not? (read-proposition (open-input-string "(not \"\")"))))
 (test-assert (primitive? (read-proposition (open-input-string "\"\""))))
-(test-error &exception (read-proposition (open-input-string "")))
+(test-assert (eof-object? (read-proposition (open-input-string ""))))
 (test-error &exception (read-proposition (open-input-string "1")))
 (test-end "io")
