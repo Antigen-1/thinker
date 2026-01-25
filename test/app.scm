@@ -11,5 +11,7 @@
 (test-assert (not (thinker 'entails? "B")))
 (thinker 'add '(not "B"))
 (test-assert (thinker 'entails? '(not "C")))
+(thinker 'clear)
+(test-assert (null? (thinker 'list)))
 (thinker 'unlock)
 (test-end "app")

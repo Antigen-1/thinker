@@ -1,18 +1,7 @@
 (import (app) (ice-9 match) (ice-9 rdelim))
 
-(define (main args)
+(define (main _)
     (define thinker (make-thinker))
-    (for-each 
-        (lambda (a)
-            (call-with-input-file
-             a
-             (lambda (in)
-                (let loop ()
-                    (let ((r (read in)))
-                        (if (eof-object? r)
-                            #f
-                            (begin (loop) (thinker 'add r))))))))
-        (cdr args))
     (let loop ()
         (define r (read (open-input-string (read-line))))
         (if (eof-object? r)
@@ -20,6 +9,12 @@
             (match r
                 (('save (? string? path))
                  (call-with-output-file path (lambda (out) (map (lambda (f) (write f out)) (thinker 'list))))
+                 (loop))
+                (('load (? string? path))
+                 (call-with-input-file path (lambda (in) (let loop () (let ((f (read in))) (if (eof-object? f) #f (begin (thinker 'add f) (loop)))))))
+                 (loop))
+                (('reset)
+                 (thinker 'clear)
                  (loop))
                 (('exit) #f)
                 (v

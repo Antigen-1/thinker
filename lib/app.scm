@@ -38,5 +38,10 @@
                 (list (lambda (r) (entails? (apply & KB) (parse-proposition r))) 
                       (list proposition-representation?)
                       (list "proposition-representation?")))
+            (hash-table-set! op-table 'clear
+                (list (lambda () (set! KB '())) '() '()))
+            (define op-list (hash-table-keys op-table))
             (lambda (op . args)
+                (unless (index op-list op eq?)
+                    (raise-contract-error 'thinker (format "~s" (cons 'or/c (map (lambda (op) (list 'quote op)) op-list)))))
                 (apply apply-op op args)))))
