@@ -1,0 +1,10 @@
+(import (srfi srfi-64) (ice-9 exceptions) (io) (data connective) (data primitive))
+
+(test-begin "io")
+(test-assert (and? (read-proposition (open-input-string "(and)"))))
+(test-assert (or? (read-proposition (open-input-string "(or (and) \"\")"))))
+(test-assert (not? (read-proposition (open-input-string "(not \"\")"))))
+(test-assert (primitive? (read-proposition (open-input-string "\"\""))))
+(test-error &exception (read-proposition (open-input-string "")))
+(test-error &exception (read-proposition (open-input-string "1")))
+(test-end "io")
