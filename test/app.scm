@@ -5,6 +5,7 @@
 (thinker 'lock)
 (thinker 'add '(and "A" (or "B" (not "C"))))
 (thinker 'add "A")
+(test-assert (equal? '("B" "C" "A") (thinker 'list-prims)))
 (thinker 'remove 0)
 (test-assert (equal? (thinker 'list) '((and "A" (or "B" (not "C"))))))
 (test-assert (thinker 'entails? "A"))
