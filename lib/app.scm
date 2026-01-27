@@ -1,7 +1,7 @@
 (library (app)
     (export make-thinker)
     (import (rnrs (6)) (srfi srfi-28) (srfi srfi-69) (ice-9 threads)
-            (algo parse) (algo list) (data connective) (parallel entail) (exn contract))
+            (algo parse) (algo list) (algo label) (data connective) (parallel entail) (exn contract))
     
     (define (check-arguments op args preds hints)
         (unless (= (length args) (length preds))
@@ -32,6 +32,7 @@
                       (list (lambda (n) (and (integer? n) (exact? n) (>= n 0) (< n (length KB))))) 
                       (list (format "(and/c exact-integer? (>=/c 0) (</c ~a))" (length KB)))))
             (hash-table-set! op-table 'list (list (lambda () (map unparse-proposition KB)) '() '()))
+            (hash-table-set! op-table 'list-prims (list (lambda () (get-labels (apply & KB))) '() '()))
             (hash-table-set! op-table 'lock (list (lambda () (lock-mutex mutex)) '() '()))
             (hash-table-set! op-table 'unlock (list (lambda () (unlock-mutex mutex)) '() '()))
             (hash-table-set! op-table 'entails?
@@ -43,5 +44,5 @@
             (define op-list (hash-table-keys op-table))
             (lambda (op . args)
                 (unless (index op-list op eq?)
-                    (raise-contract-error 'thinker (format "~s" (cons 'or/c (map (lambda (op) (list 'quote op)) op-list)))))
+                    (raise-contract-error 'thinker (format "~s" (cons 'or/c (map (lambda (op) (list 'quote op)) op-list))) op))
                 (apply apply-op op args)))))

@@ -18,5 +18,7 @@
                  (loop))
                 (('exit) #f)
                 (v
-                 (write (apply thinker v)) (newline)
-                 (loop))))))
+                 (let ((r (apply thinker v)))
+                    (unless (unspecified? r)
+                        (write r) (newline))
+                    (loop)))))))
