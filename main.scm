@@ -1,3 +1,5 @@
+(add-to-load-path (in-vicinity (dirname (current-filename)) "lib"))
+
 (import (app) (ice-9 match) (ice-9 rdelim))
 
 (define (main _)
