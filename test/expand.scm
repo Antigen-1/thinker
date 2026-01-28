@@ -3,6 +3,8 @@
 (test-begin "expand")
 (define e (make-hash-table eq?))
 (hash-table-set! e '=> (lambda (a b) `(or (not ,a) ,b)))
+(hash-table-set! e '- 1)
 (test-assert (equal? '(or (not "a") "b") (expand-proposition '(=> "a" "b") e)))
 (test-error &exception (expand-proposition '(<=> "A" "B") e))
+(test-error &exception (expand-proposition '(- "A") e))
 (test-end "expand")
