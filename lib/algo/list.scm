@@ -42,7 +42,7 @@
         (unless (list? l)
             (raise-contract-error 'remove/index "list?" l))
         (unless (and (integer? i) (exact? i) (>= i 0) (< i (length l)))
-            (raise-contract-error 'remove/index (format "(and/c exact-integer? (>=/c 0) (</c ~a))" (length l))))
+            (raise-contract-error 'remove/index (format "(and/c exact-integer? (>=/c 0) (</c ~a))" (length l)) i))
         (let loop ((l l) (i i))
             (if (= i 0)
                 (cdr l)

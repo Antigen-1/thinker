@@ -1,8 +1,7 @@
-(import (srfi srfi-64) (app) (data connective) (data primitive))
+(import (srfi srfi-64) (app) (data connective) (data primitive) (expander expand))
 
 (test-begin "app")
 (define thinker (make-thinker))
-(thinker 'lock)
 (thinker 'add '(and "A" (or "B" (not "C"))))
 (thinker 'add "A")
 (test-assert (equal? '("B" "C" "A") (thinker 'list-prims)))
@@ -14,5 +13,7 @@
 (test-assert (thinker 'entails? '(not "C")))
 (thinker 'clear)
 (test-assert (null? (thinker 'list)))
-(thinker 'unlock)
+(install-connective! '=> (lambda (A B) `(or (not ,A) ,B)))
+(thinker 'add '(=> "a" "b"))
+(test-assert (equal? (thinker 'list) '((or (not "a") "b"))))
 (test-end "app")
