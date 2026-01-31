@@ -1,6 +1,6 @@
-(library (expander expand)
+(library (data expand)
     (export expand-proposition expandable-form? install-connective!)
-    (import (algo parse) (algo pkg) (algo list) (scheme base) (srfi srfi-69) (srfi srfi-28) (exn contract) (exn internal) (ice-9 match))
+    (import (data parse) (algo pkg) (algo list) (scheme base) (srfi srfi-69) (srfi srfi-28) (exn contract) (exn internal) (ice-9 match))
 
     (define-values (install-connective! get-connective has-connective?) (make-pkg-manager))
     

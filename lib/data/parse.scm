@@ -1,4 +1,4 @@
-(library (algo parse)
+(library (data parse)
     (export parse-proposition unparse-proposition proposition-representation?)
     (import (ice-9 match) 
             (data connective) 

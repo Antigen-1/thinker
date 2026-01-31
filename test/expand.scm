@@ -1,4 +1,4 @@
-(import (srfi srfi-64) (expander expand) (srfi srfi-69))
+(import (srfi srfi-64) (data expand) (srfi srfi-69))
 
 (test-begin "expand")
 (install-connective! '=> (lambda (a b) `(or (not ,a) ,b)))

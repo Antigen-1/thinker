@@ -1,8 +1,8 @@
 (library (app)
     (export make-thinker)
     (import (rnrs (6)) (srfi srfi-28) (srfi srfi-69)
-            (algo parse) (algo list) (algo label) 
-            (expander expand)
+            (algo list) (algo label) 
+            (data expand) (data parse)
             (data connective) (parallel entail) (exn contract))
     
     (define (check-arguments op args preds hints)

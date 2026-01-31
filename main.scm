@@ -31,9 +31,6 @@
             (('load-script (? string? path))
              (load-script path)
              (loop))
-            (('reset)
-             (thinker 'clear)
-             (loop))
             (('exit) #f)
             (v
              (let ((r (apply thinker v)))

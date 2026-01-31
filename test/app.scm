@@ -1,4 +1,4 @@
-(import (srfi srfi-64) (app) (data connective) (data primitive) (expander expand))
+(import (srfi srfi-64) (app) (data connective) (data primitive) (data expand))
 
 (test-begin "app")
 (define thinker (make-thinker))
