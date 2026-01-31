@@ -5,10 +5,12 @@
     (define-values (install-connective! get-connective has-connective?) (make-pkg-manager))
     
     (define (expandable-form? f)
-        (and (list? f)
-             (pair? f)
-             (symbol? (car f))
-             (has-connective? (car f))))
+        (or (string? f)
+            (match f
+                (('not c) (expandable-form? c))
+                (((or 'and 'or) cs ...) (andmap expandable-form? cs))
+                (((? symbol? conn) cs ...) (has-connective? conn))
+                (_ #f))))
     (define (expand-proposition f)
         (let loop ((f f))
             (match f
