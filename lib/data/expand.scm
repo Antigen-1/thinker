@@ -7,7 +7,8 @@
     (define (expandable-form? f)
         (and (list? f)
              (pair? f)
-             (symbol? (car f))))
+             (symbol? (car f))
+             (has-connective? (car f))))
     (define (expand-proposition f)
         (let loop ((f f))
             (match f
