@@ -26,4 +26,6 @@
             (unless (symbol? name)
                 (raise-contract-error 'has? "symbol?" name))
             (hash-table-exists? table name))
-        (values install! get has?)))
+        (define (ls)
+            (hash-table-keys table))
+        (values install! get has? ls)))

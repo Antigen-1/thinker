@@ -15,6 +15,7 @@
 (test-assert (null? (thinker 'list)))
 (install-connective! '=> (lambda (A B) `(or (not ,(expand-proposition A)) ,(expand-proposition B))))
 (install-connective! '<=> (lambda (A B) `(and (=> ,A ,B) (=> ,B ,A))))
+(test-assert (or (equal? '(and or not <=> =>) (thinker 'list-conns)) (equal? '(and or not => <=>) (thinker 'list-conns))))
 (thinker 'add '(=> "a" (not "b")))
 (test-assert (equal? (thinker 'list) '((or (not "a") (not "b")))))
 (thinker 'clear)

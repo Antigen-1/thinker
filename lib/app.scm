@@ -37,6 +37,7 @@
                       (list (format "(and/c exact-integer? (>=/c 0) (</c ~a))" (length KB)))))
             (hash-table-set! op-table 'list (list (lambda () (map unparse-proposition KB)) '() '()))
             (hash-table-set! op-table 'list-prims (list (lambda () (get-labels (apply & KB))) '() '()))
+            (hash-table-set! op-table 'list-conns (list list-connectives '() '()))
             (hash-table-set! op-table 'entails?
                 (list (lambda (r) (entails? (apply & KB) (expand+parse-proposition r))) 
                       (list expandable-form?)

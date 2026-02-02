@@ -2,6 +2,8 @@
 
 (import (app) (ice-9 match) (ice-9 rdelim))
 
+(define current-dir (dirname (current-filename)))
+
 ;; The script loader
 (define (make-new-module)
     (reload-module (resolve-module '(scheme base))))
@@ -13,7 +15,7 @@
         (lambda () (set-current-module mod))))
 
 ;; Test the script loader
-(load-script (in-vicinity (dirname (current-filename)) (in-vicinity "examples" "connectives.scm")))
+(load-script (in-vicinity current-dir (in-vicinity "examples" "connectives.scm")))
 
 (define thinker (make-thinker))
 
@@ -44,6 +46,7 @@
                     (remove "<index>")
                     (list)
                     (list-prims)
+                    (list-conns)
                     (entails? "<form>")
                     (clear)))
              (loop))
