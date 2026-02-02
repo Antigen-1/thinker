@@ -10,10 +10,10 @@
         (original-install! 
             name
             (lambda args 
-                (let ((r (apply proc args)))
-                    (unless (proposition-representation? r)
-                        (raise-contract-error name "proposition-representation?" r))
-                    r))))
+                (let loop ((r (apply proc args)))
+                    (cond ((proposition-representation? r) r)
+                          ((expandable-form? r) (expand-proposition r))
+                          (else (raise-contract-error name "(or/c proposition-representation? expandable-form?)" r)))))))
     
     (define (expandable-form? f)
         (or (string? f)
