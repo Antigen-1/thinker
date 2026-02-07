@@ -1,6 +1,6 @@
-(library (algo pkg)
+(library (thinker algo pkg)
     (export make-pkg-manager)
-    (import (rnrs (6)) (srfi srfi-69) (srfi srfi-28) (exn contract) (exn internal) (ice-9 threads))
+    (import (rnrs (6)) (srfi srfi-69) (srfi srfi-28) (thinker exn contract) (thinker exn internal) (ice-9 threads))
     
     (define (make-pkg-manager)
         (define table (make-hash-table eq?))

@@ -1,6 +1,7 @@
-(library (algo label)
+(library (thinker algo label)
     (export get-labels)
-    (import (data connective) (data primitive) (data node) (exn contract) (srfi srfi-69) (rnrs (6)))
+    (import (thinker data connective) (thinker data primitive) (thinker data node) (thinker exn contract) 
+            (srfi srfi-69) (rnrs (6)))
     
     (define (get-labels node)
         (unless (node? node)

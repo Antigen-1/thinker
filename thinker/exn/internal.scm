@@ -1,4 +1,4 @@
-(library (exn internal)
+(library (thinker exn internal)
     (export raise-internal-error)
     (import (rnrs (6)) (ice-9 exceptions))
     

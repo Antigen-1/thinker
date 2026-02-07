@@ -1,9 +1,9 @@
-(library (parallel entail)
+(library (thinker parallel entail)
     (export entails?)
     (import (rnrs (6)) (ice-9 futures) (srfi srfi-41)
-            (data connective) (data primitive) (data node)
-            (algo env) (algo eval) (algo label) (algo list)
-            (exn contract))
+            (thinker data connective) (thinker data primitive) (thinker data node)
+            (thinker algo env) (thinker algo eval) (thinker algo label) (thinker algo list)
+            (thinker exn contract))
     
     (define (entails? KB prop)
         (unless (node? KB)

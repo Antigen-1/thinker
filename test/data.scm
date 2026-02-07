@@ -1,4 +1,4 @@
-(import (data connective) (data primitive) (srfi srfi-64) (ice-9 exceptions))
+(import (thinker data connective) (thinker data primitive) (srfi srfi-64) (ice-9 exceptions))
 
 (test-begin "data")
 (define p1 (Prim "p1"))

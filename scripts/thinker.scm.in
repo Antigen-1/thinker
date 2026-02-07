@@ -1,6 +1,4 @@
-(add-to-load-path (in-vicinity (dirname (current-filename)) "lib"))
-
-(import (app) (ice-9 match) (ice-9 rdelim))
+(import (thinker app) (ice-9 match) (ice-9 rdelim))
 
 (define current-dir (dirname (current-filename)))
 
@@ -15,7 +13,7 @@
         (lambda () (set-current-module mod))))
 
 ;; Test the script loader
-(load-script (in-vicinity current-dir (in-vicinity "examples" "connectives.scm")))
+(load-script (in-vicinity current-dir (in-vicinity ".." (in-vicinity "examples" "connectives.scm"))))
 
 (define thinker (make-thinker))
 

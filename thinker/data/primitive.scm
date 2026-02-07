@@ -1,7 +1,7 @@
-(library (data primitive)
+(library (thinker data primitive)
   (export Prim primitive? primitive-name)
-  (import (rnrs (6)) (data node)
-	        (exn contract))
+  (import (rnrs (6)) (thinker data node)
+	        (thinker exn contract))
 
   (define-record-type (primitive make-primitive primitive?)
     (fields (immutable name primitive-name))

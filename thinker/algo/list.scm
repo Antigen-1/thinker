@@ -1,6 +1,6 @@
-(library (algo list)
+(library (thinker algo list)
     (export andmap ormap index filter-map alist? remove/index)
-    (import (rnrs (6)) (exn contract) (srfi srfi-69) (srfi srfi-28))
+    (import (rnrs (6)) (thinker exn contract) (srfi srfi-69) (srfi srfi-28))
     
     (define (andmap p l)
         (unless (list? l)

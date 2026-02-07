@@ -1,7 +1,7 @@
 (hall-description
   (name "thinker")
   (prefix "guile")
-  (version "1.1")
+  (version "1.2")
   (author "Hao Zhang")
   (copyright (2026))
   (synopsis "")
@@ -12,8 +12,15 @@
   (skip ())
   (files (libraries
            ((directory
-              "lib"
+              "thinker"
               ((directory
+                 "algo"
+                 ((scheme-file "pkg")
+                  (scheme-file "env")
+                  (scheme-file "label")
+                  (scheme-file "list")
+                  (scheme-file "eval")))
+               (directory
                  "data"
                  ((scheme-file "parse")
                   (scheme-file "expand")
@@ -25,23 +32,32 @@
                  ((scheme-file "internal")
                   (scheme-file "contract")))
                (directory
-                 "algo"
-                 ((scheme-file "pkg")
-                  (scheme-file "env")
-                  (scheme-file "label")
-                  (scheme-file "list")
-                  (scheme-file "eval")))
-               (directory "parallel" ((scheme-file "entail")))
+                 "parallel"
+                 ((scheme-file "entail")))
                (scheme-file "app")))))
-         (tests ((directory "tests" ())))
+         (tests ((directory
+                   "test"
+                   ((scheme-file "expand")
+                    (scheme-file "parse")
+                    (scheme-file "entail")
+                    (scheme-file "app")
+                    (scheme-file "env")
+                    (scheme-file "label")
+                    (scheme-file "eval")
+                    (scheme-file "data")))))
          (programs
-           ((directory "scripts" ((scheme-file "thinker")))))
+           ((directory
+              "scripts"
+              ((scheme-file "thinker")))))
          (documentation
-           ((symlink "README" "README.org")
-            (text-file "HACKING")
+           ((directory
+              "doc"
+              ((texi-file "thinker")))
             (text-file "COPYING")
-            (directory "doc" ((texi-file "thinker")))))
+            (text-file "HACKING")
+            (symlink "README" "README.org")))
          (infrastructure
-           ((scheme-file "guix")
-            (text-file ".gitignore")
-            (scheme-file "hall")))))
+           ((directory "examples"
+              ((scheme-file "connectives")))
+            (scheme-file "hall")
+            (text-file ".gitignore")))))

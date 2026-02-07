@@ -1,6 +1,6 @@
-(library (algo env)
+(library (thinker algo env)
     (export labels->env-stream)
-    (import (srfi srfi-41) (exn contract) (rnrs (6)))
+    (import (srfi srfi-41) (thinker exn contract) (rnrs (6)))
     
     (define (labels->env-stream ls)
         (for-each 

@@ -1,6 +1,7 @@
-(library (data expand)
+(library (thinker data expand)
     (export expand-proposition expandable-form? install-connective! list-connectives)
-    (import (data parse) (algo pkg) (algo list) (scheme base) (srfi srfi-69) (srfi srfi-28) (exn contract) (exn internal) (ice-9 match))
+    (import (thinker data parse) (thinker algo pkg) (thinker algo list) (scheme base) (srfi srfi-69) (srfi srfi-28) 
+            (thinker exn contract) (thinker exn internal) (ice-9 match))
 
     (define-values (original-install! get-connective has-connective? original-list-connectives) (make-pkg-manager))
 

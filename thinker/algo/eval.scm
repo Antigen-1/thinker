@@ -1,6 +1,7 @@
-(library (algo eval)
+(library (thinker algo eval)
     (export eval-proposition)
-    (import (data connective) (data primitive) (algo list) (exn contract) (exn internal) (srfi srfi-28) (rnrs (6)))
+    (import (thinker data connective) (thinker data primitive) (thinker algo list) (thinker exn contract) (thinker exn internal)
+            (srfi srfi-28) (rnrs (6)))
     
     (define (eval-proposition tree env)
         (unless (alist? env)

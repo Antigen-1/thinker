@@ -1,8 +1,8 @@
-(library (data connective)
+(library (thinker data connective)
   (export & || ! and? or? not? children)
   (import (rnrs (6))
-	        (exn contract) 
-          (data primitive) (data node))
+	        (thinker exn contract) 
+          (thinker data primitive) (thinker data node))
   
   (define-record-type (And AND and?)
     (fields (immutable children and-children))

@@ -46,13 +46,13 @@ Edition @value{EDITION} @*
 This document describes Guile Thinker version @value{VERSION}.
 
 @menu
-* 介绍
-* 操作
+* Introduction:: 介绍
+* Operation:: 操作
 @end menu
 
 @c *********************************************************************
-@node 介绍
-@chapter 介绍
+@node Introduction
+@chapter Introduction
 
 Guile Thinker是一个简单的逻辑推断工具。
 它使用模型检验算法（model-checking algorithm），
@@ -64,8 +64,8 @@ Guile Thinker主要是作为一个命令行程序使用，
 但你也可以使用它所包含的库。
 
 @c *********************************************************************
-@node 操作
-@chapter 操作
+@node Operation
+@chapter Operation
 
 (save <path>)
 (load <path>)

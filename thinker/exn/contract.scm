@@ -1,4 +1,4 @@
-(library (exn contract)
+(library (thinker exn contract)
   (export raise-contract-error)
   (import (ice-9 exceptions) (rnrs (6)) (srfi srfi-28))
 

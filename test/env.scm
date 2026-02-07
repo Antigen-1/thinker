@@ -1,4 +1,4 @@
-(import (srfi srfi-64) (srfi srfi-41) (algo env))
+(import (srfi srfi-64) (srfi srfi-41) (thinker algo env))
 
 (test-begin "env")
 (test-assert
