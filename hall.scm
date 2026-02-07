@@ -1,7 +1,7 @@
 (hall-description
   (name "thinker")
   (prefix "guile")
-  (version "1.2")
+  (version "1.3")
   (author "Hao Zhang")
   (copyright (2026))
   (synopsis "")
@@ -59,5 +59,4 @@
          (infrastructure
            ((directory "examples"
               ((scheme-file "connectives")))
-            (scheme-file "hall")
-            (text-file ".gitignore")))))
+            (scheme-file "hall")))))
