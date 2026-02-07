@@ -1,3 +1,5 @@
+#!/bin/env guile3.0
+!#
 (import (thinker app) (ice-9 match) (ice-9 rdelim))
 
 (define current-dir (dirname (current-filename)))
