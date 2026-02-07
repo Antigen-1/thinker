@@ -1,0 +1,12 @@
+# -*- mode: org; coding: utf-8; -*-
+
+#+TITLE: README for Guile Thinker
+
+Guile Thinker是一个简单的逻辑推断工具。
+它使用模型检验算法（model-checking algorithm），
+实现了命题式逻辑（propositional logic）的推理。
+此外它还使用了Guile的future库进行并行优化。
+
+Guile Thinker主要是作为一个命令行程序使用，
+为此我们实现了一个简易的REPL（read-eval-print loop）。
+但你也可以使用它所包含的库。
