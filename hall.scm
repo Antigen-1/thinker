@@ -1,7 +1,7 @@
 (hall-description
   (name "thinker")
   (prefix "guile")
-  (version "1.4")
+  (version "2.0")
   (author "Hao Zhang")
   (copyright (2026))
   (synopsis "")
@@ -48,7 +48,8 @@
          (programs
            ((directory
               "scripts"
-              ((scheme-file "thinker")))))
+              ((scheme-file "thinker")
+               (scheme-file "connectives")))))
          (documentation
            ((directory
               "doc"
@@ -57,6 +58,4 @@
             (text-file "HACKING")
             (symlink "README" "README.org")))
          (infrastructure
-           ((directory "examples"
-              ((scheme-file "connectives")))
-            (scheme-file "hall")))))
+           ((scheme-file "hall")))))

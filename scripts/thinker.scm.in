@@ -15,7 +15,7 @@
         (lambda () (set-current-module mod))))
 
 ;; Test the script loader
-(load-script (in-vicinity current-dir (in-vicinity ".." (in-vicinity "examples" "connectives.scm"))))
+(load-script (in-vicinity current-dir "connectives.scm"))
 
 (define thinker (make-thinker))
 
