@@ -1,7 +1,7 @@
 (hall-description
   (name "thinker")
   (prefix "guile")
-  (version "3.0")
+  (version "3.1")
   (author "Hao Zhang")
   (copyright (2026))
   (synopsis "")
@@ -60,4 +60,4 @@
             (text-file "HACKING")
             (symlink "README" "README.org")))
          (infrastructure
-           ((scheme-file "hall")))))
+           ((scheme-file "hall") (scheme-file "guix")))))

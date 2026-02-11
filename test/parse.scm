@@ -1,4 +1,4 @@
-(import (srfi srfi-64) (thinker algo parse))
+(import (srfi srfi-64) (thinker data parse))
 
 (test-begin "parse")
 (define r '(and (or "a") "b" (not "c")))
