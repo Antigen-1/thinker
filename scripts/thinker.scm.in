@@ -4,18 +4,16 @@
 
 (define current-dir (dirname (current-filename)))
 
-;; The script loader
-(define (make-new-module)
-    (reload-module (resolve-module '(scheme base))))
-(define (load-script path)
-    (define mod (current-module))
-    (dynamic-wind
-        (lambda () (set-current-module (make-new-module)))
-        (lambda () (load path))
-        (lambda () (set-current-module mod))))
+;; The extension loader
+(define load-ext
+    (case-lambda
+        ((mod-path)
+         ((module-ref (resolve-module mod-path) 'install)))
+        ((mod-path version)
+         ((module-ref (resolve-module mod-path #t version) 'install)))))
 
-;; Test the script loader
-(load-script (in-vicinity current-dir "connectives.scm"))
+;; Test the extension loader
+(load-ext '(thinker example connectives) '(1 0))
 
 (define thinker (make-thinker))
 
@@ -30,8 +28,11 @@
             (('load (? string? path))
              (call-with-input-file path (lambda (in) (let loop () (let ((f (read in))) (if (eof-object? f) #f (begin (thinker 'add f) (loop)))))))
              (loop))
-            (('load-script (? string? path))
-             (load-script path)
+            (('load-ext path)
+             (load-ext path)
+             (loop))
+            (('load-ext path vers)
+             (load-ext path vers)
              (loop))
             (('exit) #f)
             (('commands)

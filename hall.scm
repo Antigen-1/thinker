@@ -1,7 +1,7 @@
 (hall-description
   (name "thinker")
   (prefix "guile")
-  (version "2.0")
+  (version "3.0")
   (author "Hao Zhang")
   (copyright (2026))
   (synopsis "")
@@ -28,6 +28,9 @@
                   (scheme-file "connective")
                   (scheme-file "primitive")))
                (directory
+                 "example"
+                 ((scheme-file "connectives")))
+               (directory
                  "exn"
                  ((scheme-file "internal")
                   (scheme-file "contract")))
@@ -48,8 +51,7 @@
          (programs
            ((directory
               "scripts"
-              ((scheme-file "thinker")
-               (scheme-file "connectives")))))
+              ((scheme-file "thinker")))))
          (documentation
            ((directory
               "doc"
