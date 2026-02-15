@@ -1,6 +1,6 @@
 #!/bin/env guile3.0
 !#
-(import (thinker app) (ice-9 match) (ice-9 rdelim))
+(import (thinker app) (ice-9 match) (ice-9 readline))
 
 (define current-dir (dirname (current-filename)))
 
@@ -17,8 +17,11 @@
 
 (define thinker (make-thinker))
 
+;; Enable readline for the current input port when it is a terminal
+(activate-readline)
+
 (let loop ()
-    (define r (read (open-input-string (read-line))))
+    (define r (read))
     (if (eof-object? r)
         #f
         (match r
