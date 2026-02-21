@@ -12,8 +12,8 @@
 
 (package
   (name "guile-thinker")
-  (version "5.2")
-  (source "./guile-thinker-5.2.tar.gz")
+  (version "5.3")
+  (source "./guile-thinker-5.3.tar.gz")
   (build-system gnu-build-system)
   (arguments
     `(#:modules

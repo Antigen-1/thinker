@@ -1,7 +1,7 @@
 (hall-description
   (name "thinker")
   (prefix "guile")
-  (version "5.2")
+  (version "5.3")
   (author "Hao Zhang")
   (copyright (2026))
   (synopsis "")
