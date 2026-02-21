@@ -1,7 +1,7 @@
 (hall-description
   (name "thinker")
   (prefix "guile")
-  (version "5.3")
+  (version "5.4")
   (author "Hao Zhang")
   (copyright (2026))
   (synopsis "")
@@ -33,7 +33,8 @@
                (directory
                  "exn"
                  ((scheme-file "internal")
-                  (scheme-file "contract")))
+                  (scheme-file "contract")
+                  (scheme-file "format")))
                (directory
                  "parallel"
                  ((scheme-file "entail")))
