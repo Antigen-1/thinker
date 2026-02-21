@@ -1,4 +1,4 @@
-(import (thinker data connective) (thinker data primitive) (srfi srfi-64) (ice-9 exceptions))
+(import (thinker data connective) (thinker data primitive) (srfi srfi-64) (thinker exn contract) (thinker exn internal))
 
 (test-begin "data")
 (define p1 (Prim "p1"))
@@ -8,7 +8,7 @@
 (test-assert (= 2 (length (children v))))
 (test-assert (or? (car (children v))))
 (test-assert (not? (cadr (children v))))
-(test-error &exception (children 1))
-(test-error &exception (Prim 1))
-(test-error &exception (& 1))
+(test-error &contract-error (children 1))
+(test-error &contract-error (Prim 1))
+(test-error &contract-error (& 1))
 (test-end "data")

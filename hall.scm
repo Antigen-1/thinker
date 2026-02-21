@@ -1,7 +1,7 @@
 (hall-description
   (name "thinker")
   (prefix "guile")
-  (version "4.0")
+  (version "5.0")
   (author "Hao Zhang")
   (copyright (2026))
   (synopsis "")
@@ -41,6 +41,7 @@
          (tests ((directory
                    "test"
                    ((scheme-file "expand")
+                    (scheme-file "exn")
                     (scheme-file "parse")
                     (scheme-file "entail")
                     (scheme-file "app")
