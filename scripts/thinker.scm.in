@@ -1,6 +1,6 @@
 #!/bin/env guile3.0
 !#
-(import (thinker app) (ice-9 match) (ice-9 readline) (ice-9 exceptions) (ice-9 format))
+(import (thinker app) (ice-9 match) (ice-9 readline) (ice-9 exceptions) (ice-9 pretty-print))
 
 (define current-dir (dirname (current-filename)))
 
@@ -26,7 +26,6 @@
     (with-exception-handler 
         (lambda (exn)
             (display exn err)
-            (newline)
             (loop))
         (lambda ()
             (define r (read))
@@ -65,6 +64,7 @@
                     (v
                      (let ((r (apply thinker v)))
                          (unless (unspecified? r)
-                             (write (format #t "~y~%" r)))
+                             (pretty-print r)
+                             (newline))
                          (loop))))))
         #:unwind? #t))
