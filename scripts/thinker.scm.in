@@ -64,7 +64,6 @@
                     (v
                      (let ((r (apply thinker v)))
                          (unless (unspecified? r)
-                             (pretty-print r)
-                             (newline))
+                             (pretty-print r))
                          (loop))))))
         #:unwind? #t))
